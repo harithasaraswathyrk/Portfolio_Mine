@@ -1,4 +1,4 @@
-const { src, dest } = require('gulp');
+const { src, dest, series } = require('gulp');
 const concat = require('gulp-concat');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
@@ -16,3 +16,6 @@ function jsTask() {
 
 // Export the task to make it available in the Gulpfile
 exports.jsTask = jsTask;
+
+exports.default=series(scssTask, jsTask, browserSyncServe, watchTask);
+exports.build=series(scssTask, jsTask);
