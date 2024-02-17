@@ -1,29 +1,23 @@
-// gulpfile.js
-
-const { src, dest } = require('gulp');
+const { src, dest, parallel } = require('gulp');
 const concat = require('gulp-concat');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass')); // Add require('sass')
 
-// Define a task to process JavaScript files
 function jsTask() {
-    return src('src/js/*.js') // Path to your JavaScript files
+    return src('src/js/*.js')
+        .pipe(concat('script.js'))
         .pipe(babel({
             presets: ['@babel/env']
         }))
-        .pipe(concat('script.js')) // Concatenate all files into one
-        .pipe(uglify()) // Minify the JavaScript code
-        .pipe(dest('dist/js')); // Output directory
+        .pipe(uglify())
+        .pipe(dest('dist/js'));
 }
 
-// Define a task to process SCSS files
-function scssTask() {
-    return src('src/scss/*.scss') // Path to your SCSS files
+function sassTask() {
+    return src('src/scss/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(dest('dist/css')); // Output directory
+        .pipe(dest('dist/css'));
 }
 
-// Export the tasks to make them available in the Gulpfile
-exports.jsTask = jsTask;
-exports.scssTask = scssTask;
+exports.default = parallel(jsTask, sassTask);
