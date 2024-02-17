@@ -904,6 +904,33 @@ footer a i{
 }
 
 @media(max-width:768px){
+    header {
+        padding: 15px 5%;
+    }
+    
+    .navlist {
+        display: none; /* Hide the nav links by default on small screens */
+        position: absolute;
+        top: 80px; /* Adjust as needed */
+        left: 0;
+        background: var(--bg-color);
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        z-index: 1000;
+    }
+    
+    .navlist.active {
+        display: flex; /* Show the nav links when the active class is added */
+    }
+    
+    .navlist a {
+        padding: 10px 0; /* Adjust padding as needed */
+    }
+    
+    #menu-icon {
+        display: block; /* Show the menu icon */
+    }
     .home{
         grid-template-columns: 1fr;
     }
