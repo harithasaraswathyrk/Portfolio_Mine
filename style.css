@@ -359,32 +359,37 @@ section{
 
 }
 
-.home-image{
+.home {
     position: relative;
+    background-image: url('photo.jpg'); /* Your background image */
+    background-size: 110%;
+    background-repeat: no-repeat;
+    background-position: left;
+    height: 100vh;
 }
 
-.img-box{
+.home::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust the alpha value to change the darkness */
+
+}
+
+.img-box {
     text-align: center;
 }
 
-.img-box img{
-    width: 100%;
-    max-width: 320px;
+.img-box img {
+    max-width:100%; /* Adjust the maximum width of the image */
     height: auto;
-    bottom: 1px;
-}
-
-.liquid-shape{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    top: 0;
-
-}
-
-.liquid-shape:nth-child(2){
-    filter:blur(50px)
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
+    position: relative;
+    z-index: 1; 
 }
 
 
@@ -907,7 +912,13 @@ footer a i{
     header {
         padding: 15px 5%;
     }
-    
+    #menu-icon{
+        display: block;
+        transition: all .4s ease;
+    }
+    #menu-icon.bx-x{
+        transform: rotate(-180deg);
+    }
     .navlist {
         display: none; /* Hide the nav links by default on small screens */
         position: absolute;
@@ -931,11 +942,9 @@ footer a i{
     #menu-icon {
         display: block; /* Show the menu icon */
     }
-    .home{
-        grid-template-columns: 1fr;
-    }
-    .home-image{
-        margin-bottom: 5rem;
+    .home {
+        background-size: cover; /* Ensures the background image covers the entire container */
+        background-position: center; /* Centers the background image */
     }
     .liquid-shape{
         width: 80%;

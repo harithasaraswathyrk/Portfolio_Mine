@@ -94,7 +94,7 @@ window.addEventListener("scroll", function(){
   header.classList.toggle("sticky", window.scrollY > 50);
 });
 
-/*-------------------toggle icon navbar--------------------
+/*-------------------toggle icon navbar--------------------*/
 let menuIcon = document.querySelector("#menu-icon");
 let navlist = document.querySelector(".navlist");
 navlist.classList.remove("open");
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function()
     navlist.classList.remove('open');
   }
 });
-*/
+
 document.addEventListener('DOMContentLoaded', function () {
   const menuIcon = document.getElementById('menu-icon');
   const navList = document.querySelector('.navlist');
